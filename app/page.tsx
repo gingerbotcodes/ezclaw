@@ -132,7 +132,7 @@ export default function Home() {
   const [selectedChannel, setSelectedChannel] = useState("telegram");
 
   return (
-    <div className="min-h-screen bg-black text-white font-sans">
+    <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden max-w-[100vw]">
 
       {/* ╔══ Navbar ══╗ */}
       <nav className="fixed top-0 w-full bg-black/70 backdrop-blur-xl z-50 border-b border-white/5">
