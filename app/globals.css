@@ -247,6 +247,7 @@ body {
   cursor: pointer;
   transition: all 0.25s ease;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .use-chip:hover {

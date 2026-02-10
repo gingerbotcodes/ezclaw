@@ -170,7 +170,7 @@ export default function Home() {
       </header>
 
       {/* ╔══ Interactive Configurator ══╗ */}
-      <section className="px-6 pb-24 max-w-2xl mx-auto animate-fade-in-up-delay-1">
+      <section className="px-6 pb-10 max-w-2xl mx-auto animate-fade-in-up-delay-1">
         <div className="glass-card p-6 sm:p-8 space-y-8">
           {/* Step 1: Model */}
           <div>
@@ -229,7 +229,7 @@ export default function Home() {
       </section>
 
       {/* ╔══ Comparison ══╗ */}
-      <section className="px-6 py-24 border-t border-white/5 glow-purple animate-fade-in-up-delay-2">
+      <section className="px-6 py-14 border-t border-white/5 glow-purple animate-fade-in-up-delay-2">
         <div className="max-w-4xl mx-auto relative z-10">
           <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-3">
             Traditional Method vs EZClaw
@@ -291,7 +291,7 @@ export default function Home() {
       </section>
 
       {/* ╔══ Use Cases ══╗ */}
-      <section className="py-24 border-t border-white/5">
+      <section className="py-14 border-t border-white/5">
         <div className="text-center animate-fade-in-up-delay-3 mb-12 px-6">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-2">
             What can your EZClaw assistant<br />do for you?
@@ -346,7 +346,7 @@ export default function Home() {
       <footer className="py-10 border-t border-white/5 animate-fade-in-up-delay-4">
         <div className="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-zinc-600">
-            Built with <span className="text-red-400">❤️</span> by the EZClaw Team
+            Built with <span className="text-red-400">❤️</span> by Ginger and MK42
           </p>
           <a
             href="mailto:support@ezclaw.com?subject=EZClaw%20Support%20Inquiry&body=Hi%2C%0A%0AI%20need%20help%20with%3A%0A%0A"
