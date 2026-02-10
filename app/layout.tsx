@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 
@@ -21,6 +21,13 @@ const ibmPlex = IBM_Plex_Sans({
 export const metadata: Metadata = {
   title: "EZClaw — Deploy OpenClaw in Under 1 Minute",
   description: "Deploy OpenClaw in under 1 minute. Skip all technical complexity and one-click deploy your own 24/7 active OpenClaw instance.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({
