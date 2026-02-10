@@ -26,65 +26,44 @@ export default function Home() {
           Deploy your AI Assistant<br/>in under 1 minute.
         </h1>
         <p className="text-lg text-gray-400 mb-10 max-w-xl mx-auto leading-relaxed">
-          Skip the terminal. Avoid the config. One-click deploy your 24/7 active OpenClaw instance.
+          Skip the terminal. Avoid the config. One-click deploy your 24/7 active AI employee.
         </p>
         
-        {/* Connection UI Mockup */}
-        <div className="max-w-md mx-auto bg-[#111] border border-white/10 rounded-2xl p-6 mb-10 shadow-2xl relative overflow-hidden group">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500"></div>
-          <div className="flex justify-between items-center mb-6">
-            <span className="text-sm font-bold text-gray-300">Connect Channel</span>
-            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-          </div>
-          
-          <div className="space-y-3">
-            <button className="w-full flex items-center justify-between bg-[#18181b] hover:bg-[#222] border border-white/5 p-4 rounded-xl transition group">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-black font-bold">W</div>
-                <span className="text-sm">WhatsApp</span>
-              </div>
-              <span className="text-xs text-gray-500 group-hover:text-white">Connect →</span>
-            </button>
-            <button className="w-full flex items-center justify-between bg-[#18181b] hover:bg-[#222] border border-white/5 p-4 rounded-xl transition group">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">T</div>
-                <span className="text-sm">Telegram</span>
-              </div>
-              <span className="text-xs text-gray-500 group-hover:text-white">Connect →</span>
-            </button>
-          </div>
-        </div>
-
         <button className="bg-white text-black px-8 py-4 rounded-full font-bold text-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition transform">
           Deploy Instance →
         </button>
         <p className="mt-6 text-xs text-gray-500">Limited capacity: 11 servers remaining</p>
       </header>
 
-      {/* Comparison Table */}
-      <section className="py-20 border-t border-white/5 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12">
-            <div>
-              <h3 className="text-xl font-bold mb-6 text-gray-500">Traditional Method</h3>
-              <ul className="space-y-4 text-sm text-gray-500 font-mono">
-                <li className="flex justify-between border-b border-white/5 pb-2"><span>1. Buy VPS ($5/mo)</span> <span>15m</span></li>
-                <li className="flex justify-between border-b border-white/5 pb-2"><span>2. SSH & Security</span> <span>20m</span></li>
-                <li className="flex justify-between border-b border-white/5 pb-2"><span>3. Install Node.js</span> <span>10m</span></li>
-                <li className="flex justify-between border-b border-white/5 pb-2"><span>4. Config OpenClaw</span> <span>30m</span></li>
-                <li className="text-red-500 pt-2">Total: 1 Hour + Headaches</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold mb-6 text-white">EZClaw Method</h3>
-              <ul className="space-y-4 text-sm text-gray-300 font-mono">
-                <li className="flex justify-between border-b border-white/10 pb-2"><span>1. Sign In</span> <span>5s</span></li>
-                <li className="flex justify-between border-b border-white/10 pb-2"><span>2. Pick Model</span> <span>10s</span></li>
-                <li className="flex justify-between border-b border-white/10 pb-2"><span>3. Deploy</span> <span>15s</span></li>
-                <li className="text-green-400 pt-2 font-bold">Total: 30 Seconds</li>
-              </ul>
-            </div>
+      {/* Use Cases Section (Cloned from Screenshot) */}
+      <section className="py-32 px-6 border-t border-white/5">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-2">What can EZClaw<br/>do for you?</h2>
+          <p className="text-gray-500 mb-12 text-lg">One assistant, thousands of use cases</p>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            {[
+              { icon: "📥", text: "Organize your inbox" },
+              { icon: "🎧", text: "Answer support tickets" },
+              { icon: "🧾", text: "Track expenses and receipts" },
+              { icon: "🛡️", text: "Compare insurance quotes" },
+              { icon: "📉", text: "Price-drop alerts" },
+              { icon: "⚖️", text: "Compare product specs" },
+              { icon: "📝", text: "Summarize bullet points" },
+              { icon: "✈️", text: "Book travel and hotels" },
+              { icon: "💼", text: "Draft job descriptions" },
+              { icon: "🏃", text: "Run standup summaries" },
+            ].map((item, i) => (
+              <div key={i} className="px-6 py-3 border border-white/10 rounded-full bg-[#111] hover:border-white/30 transition cursor-default flex items-center gap-3 text-sm text-gray-300 hover:text-white group">
+                <span className="opacity-50 group-hover:opacity-100 transition">{item.icon}</span>
+                {item.text}
+              </div>
+            ))}
           </div>
+
+          <p className="mt-12 text-gray-500 text-sm">
+            PS. You can add as many use cases as you want via natural language
+          </p>
         </div>
       </section>
 
