@@ -18,7 +18,7 @@ app.get("/health", (_req: Request, res: Response) => {
 // ── POST /agent/spawn ──
 app.post("/agent/spawn", async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { userId, apiKey } = req.body;
+        const { userId, apiKey, telegramBotId, plan } = req.body;
 
         if (!userId || typeof userId !== "string") {
             res.status(400).json({ error: "userId is required (string)" });
@@ -29,7 +29,7 @@ app.post("/agent/spawn", async (req: Request, res: Response, next: NextFunction)
             return;
         }
 
-        const result = await spawnAgent(userId, apiKey);
+        const result = await spawnAgent(userId, apiKey, telegramBotId, plan);
         res.status(201).json(result);
     } catch (err) {
         next(err);

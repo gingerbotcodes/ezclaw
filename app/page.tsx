@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { signIn } from "next-auth/react";
 
 /* ── SVG Icon Components ── */
 const ClaudeIcon = () => (
@@ -83,15 +84,15 @@ const MailIcon = () => (
 
 /* ── Data ── */
 const models = [
-  { id: "claude", name: "Claude Opus 4", icon: <ClaudeIcon />, desc: "Anthropic" },
-  { id: "gpt", name: "GPT-5.2", icon: <GPTIcon />, desc: "OpenAI" },
-  { id: "gemini", name: "Gemini 3 Flash", icon: <GeminiIcon />, desc: "Google" },
+  { id: "claude", name: "Claude Opus 4", icon: <ClaudeIcon />, desc: "Anthropic", price: "₹2,999/mo", tagline: "Best in Class" },
+  { id: "gpt", name: "GPT-5.2", icon: <GPTIcon />, desc: "OpenAI", price: "₹1,999/mo", tagline: "Good for Reasoning" },
+  { id: "gemini", name: "Gemini 3 Flash", icon: <GeminiIcon />, desc: "Google", price: "₹999/mo", tagline: "Fast & Efficient" },
 ];
 
 const channels = [
-  { id: "telegram", name: "Telegram", icon: <TelegramIcon /> },
-  { id: "discord", name: "Discord", icon: <DiscordIcon /> },
-  { id: "whatsapp", name: "WhatsApp", icon: <WhatsAppIcon /> },
+  { id: "telegram", name: "Telegram", icon: <TelegramIcon />, available: true },
+  { id: "discord", name: "Discord", icon: <DiscordIcon />, available: false },
+  { id: "whatsapp", name: "WhatsApp", icon: <WhatsAppIcon />, available: false },
 ];
 
 const traditionalSteps = [
@@ -188,6 +189,8 @@ export default function Home() {
                   <div>
                     <div className="text-sm font-medium text-white">{m.name}</div>
                     <div className="text-[11px] text-zinc-500">{m.desc}</div>
+                    <div className="text-[11px] font-semibold text-violet-400 mt-0.5">{m.price}</div>
+                    <div className="text-[10px] text-zinc-600 italic">{m.tagline}</div>
                   </div>
                 </button>
               ))}
@@ -203,11 +206,15 @@ export default function Home() {
               {channels.map((c) => (
                 <button
                   key={c.id}
-                  onClick={() => setSelectedChannel(c.id)}
-                  className={`select-card flex flex-col items-center justify-center gap-2 py-5 ${selectedChannel === c.id ? "selected" : ""}`}
+                  onClick={() => c.available && setSelectedChannel(c.id)}
+                  disabled={!c.available}
+                  className={`select-card flex flex-col items-center justify-center gap-2 py-5 relative ${selectedChannel === c.id ? "selected" : ""} ${!c.available ? "opacity-40 cursor-not-allowed" : ""}`}
                 >
                   {c.icon}
                   <span className="text-xs font-medium text-zinc-400">{c.name}</span>
+                  {!c.available && (
+                    <span className="absolute top-1.5 right-1.5 text-[8px] font-bold uppercase tracking-wider text-zinc-500 bg-white/5 px-1.5 py-0.5 rounded">Soon</span>
+                  )}
                 </button>
               ))}
             </div>
@@ -220,7 +227,10 @@ export default function Home() {
               <br />
               <span className="text-zinc-600">Limited cloud servers — only <strong className="text-zinc-400">11</strong> remaining</span>
             </p>
-            <button className="inline-flex items-center gap-3 bg-white text-black px-7 py-3 rounded-xl font-semibold text-sm hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-[1.03] active:scale-[0.97] transition-all duration-200">
+            <button
+              onClick={() => signIn("google", { callbackUrl: `/buy?model=${selectedModel}&channel=${selectedChannel}` })}
+              className="inline-flex items-center gap-3 bg-white text-black px-7 py-3 rounded-xl font-semibold text-sm hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 cursor-pointer"
+            >
               <GoogleIcon />
               Sign in with Google
             </button>

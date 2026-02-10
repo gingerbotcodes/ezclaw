@@ -48,7 +48,9 @@ function ensureDataDir(userId: string): string {
  */
 export async function spawnAgent(
     userId: string,
-    apiKey: string
+    apiKey: string,
+    telegramBotId?: string,
+    plan?: string
 ): Promise<SpawnResult> {
     // Ping Docker to verify connection
     try {
@@ -93,10 +95,14 @@ export async function spawnAgent(
     }
 
     // Create and start container
+    const envVars = [`API_KEY=${apiKey}`];
+    if (telegramBotId) envVars.push(`TELEGRAM_BOT_TOKEN=${telegramBotId}`);
+    if (plan) envVars.push(`PLAN=${plan}`);
+
     const container = await docker.createContainer({
         Image: IMAGE,
         name,
-        Env: [`API_KEY=${apiKey}`],
+        Env: envVars,
         HostConfig: {
             Memory: MEMORY_LIMIT,
             MemorySwap: MEMORY_LIMIT, // no swap
